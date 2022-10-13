@@ -33,9 +33,6 @@ public class QuanLySinhVien {
                 System.out.println("Vui lòng nhập số !");
             }
         }
-
-
-
         System.out.println("Nhập Giới Tính");
         String gioiTinh = scanner.nextLine();
         System.out.println("Nhập Địa Chỉ");
@@ -55,8 +52,6 @@ public class QuanLySinhVien {
                 System.out.println("Vui lòng nhập số !");
             }
         }
-
-
         return new SinhVien(maSinhVien, hoVaTen, tuoi, gioiTinh, diaChi, diemTrungBinh);
     }
 

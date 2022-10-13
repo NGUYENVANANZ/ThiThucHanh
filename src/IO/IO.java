@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class IO {
-    static File file = new File("C:\\C0722G1\\Case_Modun_2\\src\\ThiThucHanhModun2\\fileSinhVien.txt");
+    static File file = new File("C:\\C0722G1\\ThiThucHanh\\src\\fileSinhVien.txt");
 
     public static void write(ArrayList<SinhVien> sinhViens) {
 
