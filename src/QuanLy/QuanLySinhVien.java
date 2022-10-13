@@ -56,8 +56,14 @@ public class QuanLySinhVien {
     }
 
     public void hienThi() {
-        for (SinhVien x : sinhViens) {
-            System.out.println(x.toString());
+        for (int i = 0; i < sinhViens.size(); i++) {
+            if ((i + 1) % 5 == 0) {
+                System.out.println(sinhViens.get(i));
+                scanner.nextLine();
+            } else {
+                System.out.println(sinhViens.get(i));
+
+            }
         }
     }
 
