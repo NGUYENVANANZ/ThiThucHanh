@@ -13,23 +13,26 @@ public class QuanLySinhVien {
     ArrayList<SinhVien> sinhViens = new ArrayList<>();
 
     public SinhVien nhapThongTin() {
-        System.out.println("Nhập Mã Sinh Viên :");
-        String maSinhVien = scanner.nextLine();
+        String maSinhVien;
+        do {
+            System.out.println("Nhập Mã Sinh Viên :");
+            maSinhVien = scanner.nextLine();
+        } while (checkMaSnhVien(maSinhVien));
         System.out.println("Nhập Họ Và Tên Sinh Viên :");
         String hoVaTen = scanner.nextLine();
         System.out.println("Nhập Tuổi :");
         int tuoi;
-        while (true){
+        while (true) {
             try {
                 do {
                     tuoi = Integer.parseInt(scanner.nextLine());
-                    if (tuoi < 0 || tuoi > 100){
+                    if (tuoi < 0 || tuoi > 100) {
                         System.out.println("Đừng có nhâyy");
                     }
-                }while (tuoi < 0 || tuoi > 100);
+                } while (tuoi < 0 || tuoi > 100);
 
                 break;
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số !");
             }
         }
@@ -39,20 +42,30 @@ public class QuanLySinhVien {
         String diaChi = scanner.nextLine();
         System.out.println("Nhập Điểm Trung Bình :");
         double diemTrungBinh;
-        while (true){
+        while (true) {
             try {
                 do {
-                    diemTrungBinh= Double.parseDouble(scanner.nextLine());
-                    if (diemTrungBinh < 0 || diemTrungBinh > 10){
+                    diemTrungBinh = Double.parseDouble(scanner.nextLine());
+                    if (diemTrungBinh < 0 || diemTrungBinh > 10) {
                         System.out.println("Điểm trung bình chỉ từ 0 đến 10");
                     }
-                }while (diemTrungBinh < 0 || diemTrungBinh > 10);
+                } while (diemTrungBinh < 0 || diemTrungBinh > 10);
                 break;
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số !");
             }
         }
         return new SinhVien(maSinhVien, hoVaTen, tuoi, gioiTinh, diaChi, diemTrungBinh);
+    }
+
+    public boolean checkMaSnhVien(String maSinhVien) {
+        for (int i = 0; i < sinhViens.size(); i++) {
+            if (sinhViens.get(i).getMaSinhVien().equals(maSinhVien)) {
+                System.out.println("Trùng mã sinh viên");
+                return true;
+            }
+        }
+        return false;
     }
 
     public void hienThi() {
@@ -123,16 +136,16 @@ public class QuanLySinhVien {
         System.out.println("2. Sắp xếp điểm trung bình tăng dần");
         System.out.println("3. Hủy bỏ sắp xếp");
         int choice;
-        while (true){
+        while (true) {
             try {
                 do {
                     choice = Integer.parseInt(scanner.nextLine());
-                    if (choice < 1 || choice > 3){
+                    if (choice < 1 || choice > 3) {
                         System.out.println("Chọn 1 hoặc 2");
                     }
-                }while (choice < 1 || choice > 3);
-               break;
-            }catch (NumberFormatException e){
+                } while (choice < 1 || choice > 3);
+                break;
+            } catch (NumberFormatException e) {
                 System.out.println("Vui Lòng Nhập Số");
             }
         }
@@ -145,12 +158,12 @@ public class QuanLySinhVien {
         }
     }
 
-    public void docFile(){
+    public void docFile() {
         sinhViens = IO.reader();
         System.out.println("Đọc File Thành Công");
     }
 
-    public void vietFile(){
+    public void vietFile() {
         IO.write(sinhViens);
         System.out.println("Viết File Thành Công");
     }
